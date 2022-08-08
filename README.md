@@ -140,7 +140,7 @@ Link for connection to MongoDB Compass is `mongodb+srv://TissueSampleDB:Universi
 | [nodemon](https://www.npmjs.com/package/nodemon)      | A module essential for Nodejs development pipeline.                                       |
 
 
-## API Design by `RERTful Design Convention`
+## API Design - `RERTful Design Convention`
 
 #### GET - `/getCollection/:p_id/:MaxPerPage`
 
