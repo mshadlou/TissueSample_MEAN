@@ -1,7 +1,4 @@
 
-[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 # TissueSample_MEAN
 
 
@@ -197,3 +194,6 @@ I have enabled the integration between Heroku and GitHub. Check the demo in foll
   <li>CI/CD Pipeline using Azure DevOps</li> 
   <li>Creating same project by ASP.NET Core, AngularJS, and SQL server and then deploying in Azure PaaS</li> 
 </ul>
+
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
