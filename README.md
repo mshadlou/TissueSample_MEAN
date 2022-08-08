@@ -17,7 +17,7 @@
 6. Deploy in the cloud
 
 This demo has been developed by MEAN Stack.
-![MEAN-Stack Image]()
+![MEAN-Stack Image](https://github.com/mshadlou/TissueSample_MEAN/blob/main/docs/MEAN%20Stack.png)
 
 ### To run the application
 
@@ -186,7 +186,7 @@ npm dev
 ### Heroku
 Heroku is a platform as a service (PaaS) that enables developers to build, deliver, monitor, scale and run applications entirely in the cloud.
 I have enabled the integration between Heroku and GitHub. Check the demo in following link.
-<a href=""> Live Demo</a>
+<a href="https://tissuesampling.herokuapp.com/"> Live Demo</a>
 
 
 ## TODO List
