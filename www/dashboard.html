@@ -1,0 +1,163 @@
+<div style="height:70px;"></div><!-- For making empty space at top-->
+
+<div class="container">	
+	<div id="myMainnav" class="mainnav">
+
+		<div>
+			<div class="form-group row">
+				<div class="col-md-12">
+					<label for="p_id">Search in the Collections</label>
+					<!--Search box-->
+					<input autocomplete="off" type="text" class="form-control" id="p_id" placeholder="write collection details" list="collection_search_list" ng-model="search_query" ng-change="CollectionSearch()">
+					<!--Search lisults as well as initial loading results-->
+					<table class="table table-striped table-primary table-hover" styel="width: 100%;" id="collection_search_list" ng-model="collection_search_list">
+						<thead class="table-light">
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Disease Term</th>
+								<th scope="col">Title</th>
+							<!--	<th scope="col">Date</th> -->
+								<th scope="col"></th> <!--Action-->
+								<th scope="col"></th> <!--Selected-->
+							</tr>
+						</thead>
+						<tbody >
+							<tr ng-repeat="x in Collection_search_results | filter:search_query | limitTo:15">
+								<th scope="row" styel="cursor: pointer;" ng-click="DisplaySample(x.id)">{{x.id || null}}</th>
+								<td styel="cursor: pointer;" ng-click="DisplaySample(x.id)">{{x.disease_term  || null}}</td>
+								<td styel="cursor: pointer;" ng-click="DisplaySample(x.id)">{{x.title  || null}}</td>
+							<!--	<td styel="cursor: pointer;" ng-click="DisplaySample(x.id)">{{(x.date | ShowDateDDMMYYY) || null}}</td> -->
+								<td><span style="cursor: pointer;" ng-click="EditCollection(x.id)">&#9999;</span> <span style="cursor: pointer;" ng-click="DeleteCollection(x.id)">&#128465;</span> </td>
+								<td styel="cursor: pointer;" ng-click="DisplaySample(x.id)"> {{x.htmlcode}}  </td>
+							</tr>					
+						</tbody>
+					</table>
+
+					<div class="row justify-content-md-center" ng-show="Show_Pagination">
+						<!--Pagination-->
+						<div class="col-auto">
+							<div class="pagination">
+								<a href="#" ng-show="Show_PagePrevious" ng-click="previousPage()">&laquo;</a>
+								<a href="#" class="active">{{PageID}}</a>
+								<a href="#" ng-show="Show_PageNext" ng-click="nextPage()">&raquo;</a>
+							</div>
+						</div>
+						
+						<!--Dropdown-->
+						<div class="col-auto align-self-end">
+							<div class="dropdownMSH">
+								<button class="btn btn-sm float-right" style="background-color: #A9CCE3; font-weight: bold;">Max no of Rows in a page</button>
+								<div class="dropdownMSH-content">
+									<a class="dropdownMSH-item" href="#" ng-click="SetMaxRows(5)">5</a>
+									<a class="dropdownMSH-item" href="#" ng-click="SetMaxRows(10)">10</a>
+									<a class="dropdownMSH-item" href="#" ng-click="SetMaxRows(20)">20</a>
+									<a class="dropdownMSH-item" href="#" ng-click="SetMaxRows(50)">50</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div style="height:20px;"></div><!-- For making empty space-->
+		<!--Form to Create or Edit a Collection-->
+		<div ng-show="Show_CollectionForm">
+			<form ng-submit="Update_CollectionForm(c_datain)">
+				<h4><span class="badge bg-primary">Create/Edit Collection doc: </span></h4>
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label for="q_id">Disease Terms</label>
+						<input type="text" autocomplete="off" class="form-control" id="disease_term" ng-model="c_datain.disease_term" placeholder="i.e. Cirrhosis of liver">
+					</div>
+					<div class="col-md-6">
+						<label for="c_name">Title</label>
+						<input type="text" class="form-control" id="title" ng-model="c_datain.title" placeholder="i.e. Mothers Pregnancy Samples">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-12">
+						<input class="btn btn-primary" type="submit" value="Submit request"> <!--Another one will be edit collection-->
+					</div>
+				</div>
+			</form>	
+		</div>
+
+		<!--Table to Show the table for an associated Collection -->
+		<div ng-show="Show_SampleTables && Table_S>0" class="col-md-10 offset-md-1">
+			<div class="form-group row">
+				<h4><span class="badge badge-dark">Samples</span></h4>
+				<table class="table table-striped table-info table-hover table-condensed" styel="width: 100%;">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Collection Id</th>
+							<th scope="col">Donor Count</th>
+							<th scope="col">Material Type</th>
+							<th scope="col">Date</th>
+							<th scope="col"></th> <!--Action-->
+						</tr>
+					</thead>
+					<tbody >
+						<tr ng-repeat="t_id in [] | range:(Table_S)">
+							<th scope="row">{{Sample_results[t_id].id || null}}</th>
+							<td>{{Sample_results[t_id].c_id || null}}</td>
+							<td>{{Sample_results[t_id].donor_count || null}}</td>
+							<td>{{Sample_results[t_id].mat_type || null}}</td>
+							<td>{{(Sample_results[t_id].date | ShowDateDDMMYYY) || null}}</td>
+							<td><span style="cursor: pointer;" ng-click="EditSample(Sample_results[t_id].id)">&#9999;</span> <span style="cursor: pointer;" ng-click="DeleteSample(Sample_results[t_id].id)">&#128465;</span> </td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!--Form to Create or Edit a Sample-->
+		<div ng-show="Show_SampleForm" class="col-md-10 offset-md-1">
+			<form ng-submit="Update_SampleForm()">
+				<h4><span class="badge bg-info text-dark">Create/Edit Sample doc: </span></h4>
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label for="q_id">Donor Count</label>
+						<input type="number" class="form-control" id="donor_count" ng-model="s_datain.donor_count" placeholder="i.e. 90210">
+					</div>
+					<div class="col-md-6">
+						<label for="c_name">Material Type</label>
+						<input type="text" class="form-control" id="mat_type" ng-model="s_datain.mat_type" placeholder="i.e. Cerebrospinal fluid">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-12">
+						<input class="btn btn-info" type="submit" value="Submit request"> <!--Another one will be edit sample-->
+					</div>
+				</div>
+			</form>	
+		</div>
+
+
+	</div>
+	<!-- Modal Warning -->
+	<div class="modal fade" id="WarningModelStatic" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="WarningModelStaticLabel">Warning</h5>
+				<button type="button" class="btn-close" id="CloseModal1"></button>
+			</div>
+			<div class="modal-body">
+				{{ModalMessage}}
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" id="CloseModal2">Close</button>
+				<button type="button" class="btn btn-danger" id="ApproveModal">Delete</button>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
+
+<div style="height:50px;"></div><!-- For making empty space at bot-->
+

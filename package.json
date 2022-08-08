@@ -1,0 +1,46 @@
+{
+  "name": "TissueSample_MEAN",
+  "version": "1.2.0",
+  "private": true,
+  "description": "This repository has been created for developing a MVP for Tissue Sampling project. MEAN Stack is used for development.",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.0",
+    "express-fileupload": "1.1.6",
+    "file-system": "^2.2.2",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-ng-annotate": "^2.1.0",
+    "gulp-nodemon": "^2.5.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "minimatch": "3.0.4",
+    "mongodb": "3.5.7",
+    "mongoose": "5.9.13",
+    "multer": "^1.3.0"
+  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "gulp server"
+  },
+  "author": "Masoud Shadlou <m.shadlou@brighton.ac.uk>",
+  "license": "GNU GPL V2",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "http://TBC",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "gulp-babel": "^8.0.0",
+    "gulp-trim": "^1.0.2",
+    "nodemon": "^2.0.12"
+  }
+}
