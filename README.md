@@ -4,6 +4,9 @@
 
 > You must have npm package manager and nodeJs already installed in your platform
 
+This repo belongs to "One problem, two solutions" and here I present solution using MEAN-Stack.
+Another solution is <a href="https://github.com/mshadlou/TissueSample_ASP.NET"> ASP.NET Stack</a>
+
 ## Goals
 
 1. Display a list of collections on the home page (including their title and associated disease).
