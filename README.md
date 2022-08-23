@@ -113,10 +113,7 @@ var Sample = db.model('Sample',{
 })
 
 ```
-Username and password for aformenetioned collections are as follow:
-Username: TissueSampleDB <br>
-Password: UniversityNottingham{2022}<br>
-Link for connection to MongoDB Compass is `mongodb+srv://TissueSampleDB:UniversityNottingham{2022}@cluster0.kbrljqd.mongodb.net/TissueSampleDB`
+Link for connection to MongoDB Compass is `mongodb+srv://TissueSampleDB:{password}@cluster0.kbrljqd.mongodb.net/TissueSampleDB`
 
 
 
